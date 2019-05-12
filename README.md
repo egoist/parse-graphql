@@ -19,12 +19,77 @@ yarn add parse-graphql
 ```js
 const { parse } = require('parse-graphql')
 
-parse(`{
+const document = parse(`{
   user {
     name
     id
   }
 }`)
+```
+
+The `document` is:
+
+```js
+{
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: undefined,
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: undefined,
+            name: { kind: 'Name', value: 'user', loc: { start: 4, end: 8 } },
+            arguments: [],
+            directives: [],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  alias: undefined,
+                  name: {
+                    kind: 'Name',
+                    value: 'name',
+                    loc: { start: 15, end: 19 }
+                  },
+                  arguments: [],
+                  directives: [],
+                  selectionSet: undefined,
+                  loc: { start: 15, end: 19 }
+                },
+                {
+                  kind: 'Field',
+                  alias: undefined,
+                  name: {
+                    kind: 'Name',
+                    value: 'id',
+                    loc: { start: 24, end: 26 }
+                  },
+                  arguments: [],
+                  directives: [],
+                  selectionSet: undefined,
+                  loc: { start: 24, end: 26 }
+                }
+              ],
+              loc: { start: 9, end: 30 }
+            },
+            loc: { start: 4, end: 30 }
+          }
+        ],
+        loc: { start: 0, end: 32 }
+      },
+      loc: { start: 0, end: 32 }
+    }
+  ],
+  loc: { start: 0, end: 32 }
+}
 ```
 
 ## Contributing
